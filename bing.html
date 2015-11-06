@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app="myRealtorApp">
+<head>
+   <title>RealtorApp</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+   <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+   
+   <script type="text/javascript" src="js/distance.js"></script>
+</head>
+<body ng-controller="bodyCtrl">
+   <h1>Welcome {{usrName}}</h1>
+   <input type="text" ng-model="usrName" placeholder="Enter name here"><button ng-click="getMap()">Get Map</button><button ng-click="getPinLocation(listings[0])">Get Listings</button>
+
+   <div id="mapDisplay" style="position:relative; width:600px;height:600px;"></div>
+   
+   <form onsubmit="getListings();">
+      
+   </form>
+</body>
+</html>
