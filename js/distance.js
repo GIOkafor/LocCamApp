@@ -47,14 +47,20 @@ myRealtorApp.controller('bodyCtrl', [
 		$scope.getPinLocation = function(listing){
 			var searchManager = new Microsoft.Maps.Search.SearchManager(map);
 			
-			var geocodeRequest = {where:listing.address, count:10, callback:createMapPin, errorCallback:null};
+			var geocodeRequest = 
+				{
+					where:listing.address, 
+					count:10, 
+					callback:createMapPin, 
+					errorCallback:null
+				};
 			searchManager.geocode(geocodeRequest);
 		}
 
 		function createMapPin(geocodeResult){
-			console.log("Creating pin for address: " + geocodeResult);
+			console.log("Creating pin for address: " + geocodeResult.results[0].name);
 
-			var pin = new Microsoft.Maps.Pushpin(geocodeResult, null);
+			var pin = new Microsoft.Maps.Pushpin(geocodeResult.results[0].location, null);
 			Microsoft.Maps.Events.addHandler(pin, 'click', function () {
 				search_showInfoBox(result)
 			});
